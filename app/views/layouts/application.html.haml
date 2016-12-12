@@ -7,4 +7,15 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    %a{href: '/'}
+      Home
+    |
+    %a{href: '/users'}
+      Users
+    |
+    %a{href: '/about_us'}
+      About Us
+    %br
+    = flash[:notice] if flash[:notice]
+    = flash[:alert] if flash[:alert]
     = yield
