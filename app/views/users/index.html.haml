@@ -3,6 +3,12 @@
 = link_to 'New User', new_user_path
 %br
 %br
+
+= form_tag("/users", method: :get) do
+  = label_tag(:query, 'Search:')
+  = text_field_tag(:query)
+  = submit_tag("Submit")
+
 - @users.each do |user|
   = link_to user_path(user) do
     = user.fname + ' ' + user.lname

@@ -1,0 +1,5 @@
+%h1 Search Results
+- @search_users.each do |user|
+  = link_to user_path(user) do
+    = user.fname + ' ' + user.lname
+  %br

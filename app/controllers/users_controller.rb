@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    if params[:query]
+      @users = User.where('lower(fname) = ?', params[:query].downcase)
+    else
+      @users = User.all
+    end
   end
 
   def show
