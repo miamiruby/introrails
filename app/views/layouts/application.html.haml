@@ -15,6 +15,21 @@
     |
     %a{href: '/about_us'}
       About Us
+    - if user_signed_in?
+      |
+      %a{href: '/logout'}
+        Logout
+      // Below is how you do it with proper delete style
+      = #link_to('Logout', destroy_session_path, method: :delete)
+    - else
+      |
+      %a{href: '/login'}
+        Login
+    %br
+    %br
+    - if current_user
+      %h2
+        = 'Welcome ' + current_user.fname
     %br
     = flash[:notice] if flash[:notice]
     = flash[:alert] if flash[:alert]

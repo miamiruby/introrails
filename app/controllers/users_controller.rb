@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     if params[:query]
-      @users = User.where('lower(fname) = ?', params[:query].downcase)
+      @users = User.where('lower(fname) LIKE ? OR lower(lname) LIKE ?', params[:query].downcase, params[:query].downcase)
     else
       @users = User.all
     end
