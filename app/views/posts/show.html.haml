@@ -1,0 +1,17 @@
+%h1 Show Post
+- if user_signed_in? && current_user.id == @post.user.id
+  = link_to('Edit Post', edit_post_path(@post))
+%br
+%br
+ID: 
+= @post.id
+%br
+Title:
+= @post.title
+= ' by ' + @post.user.fname if @post.user
+%br
+Body:
+= @post.body
+%br
+
+= link_to('Delete Post?', post_path(@post.id), method: :delete) if user_signed_in? && current_user.id == @post.user.id
